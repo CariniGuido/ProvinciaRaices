@@ -40,7 +40,7 @@ if(!isset($inicio)) {
 
                 <a href="/">
 
-                    <img src="/public/build/img/logo.svg" alt="logo">
+                    <img src="/public/build/img/logo(1).png" alt="logo">
 
                 </a>
 

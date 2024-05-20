@@ -6,11 +6,13 @@
 
             <div class="icono">
 
-                <img src="/public/build/img/icono1.svg" alt="icono seguridad" loading="lazy">
+            <img src="/public/build/img/ojo-con-pestanas(3).png" alt="icono seguridad" loading="lazy" style="width: 123px; aspect-ratio: 198 / 150; display:inline; fill: red;">
 
-                <h3>Seguridad</h3>
+                <h3>Nuestra Visión</h3>
 
-                <p>In porta tempor venenatis. Nunc vitae metus sapien. Nam iaculis scelerisque eros, at sagittis felis maximus vel. Vivamus tempus aliquam accumsan. Aenean nunc augue, laoreet id massa vitae, imperdiet dignissim nisl. Praesent condimentum felis sit amet libero pharetra mollis. Morbi a ante sed nisl pharetra tempor. </p>
+                <p>
+
+Aspiramos a ser la plataforma líder en el mercado inmobiliario, facilitando la conexión entre inmobiliarias y compradores potenciales a través de la innovación y el uso de tecnología avanzada. </p>
 
             </div>
 
@@ -20,7 +22,7 @@
 
                 <h3>Precio</h3>
 
-                <p>In porta tempor venenatis. Nunc vitae metus sapien. Nam iaculis scelerisque eros, at sagittis felis maximus vel. Vivamus tempus aliquam accumsan. Aenean nunc augue, laoreet id massa vitae, imperdiet dignissim nisl. Praesent condimentum felis sit amet libero pharetra mollis. Morbi a ante sed nisl pharetra tempor. </p>
+                <p>Nuestra plataforma reúne ofertas de múltiples inmobiliarias, proporcionando una variedad de precios para que encuentres la opción que mejor se adapte a tu situación financiera. </p>
 
             </div>
 
@@ -30,7 +32,7 @@
 
                 <h3>Tiempo</h3>
 
-                <p>In porta tempor venenatis. Nunc vitae metus sapien. Nam iaculis scelerisque eros, at sagittis felis maximus vel. Vivamus tempus aliquam accumsan. Aenean nunc augue, laoreet id massa vitae, imperdiet dignissim nisl. Praesent condimentum felis sit amet libero pharetra mollis. Morbi a ante sed nisl pharetra tempor. </p>
+                <p>Filtra fácilmente por localidad. Explora una extensa selección de casas y departamentos en un solo lugar, sin necesidad de visitar múltiples sitios web. </p>
 
             </div>
 

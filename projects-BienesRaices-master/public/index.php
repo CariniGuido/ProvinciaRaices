@@ -36,9 +36,9 @@ $router->get('/logout', [LoginController::class, 'logout']);
 // Agregar una nueva ruta para manejar la solicitud de filtrado por localidad
 
 
-$router->get('/propiedades/filtrar', [PropiedadController::class, 'filtrarPorLocalidad']);
 
 
+$router->get('/propiedades/filtrar', [PropiedadController::class, 'filtrarPorLocalidad']); // Nueva ruta para filtrar por localidad
 
 //Zona Privada
 

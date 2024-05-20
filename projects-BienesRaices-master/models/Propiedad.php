@@ -2,11 +2,8 @@
 namespace Model;
 
 class Propiedad extends ActiveRecord {
-    
     protected static $tabla = 'propiedades';
-
-    protected static $columnasDB = ['id', 'titulo', 'precio', 'imagen', 'descripcion', 'habitaciones',
-    'wc', 'estacionamiento', 'creado', 'localidad', 'vendedorId'];
+    protected static $columnasDB = ['id', 'titulo', 'precio', 'imagen', 'descripcion', 'habitaciones', 'wc', 'estacionamiento', 'creado', 'localidad', 'vendedorId'];
 
     public $id;
     public $titulo;
@@ -17,12 +14,13 @@ class Propiedad extends ActiveRecord {
     public $wc;
     public $estacionamiento;
     public $creado;
-    public $localidad; // Nuevo campo localidad
+    public $localidad; 
     public $vendedorId; 
+    public $nombre; // Propiedad para el nombre del vendedor
 
     public function __construct($args = [])
     {
-        $this->id = $args['id'] ?? '';
+        $this->id = $args['id'] ?? null;
         $this->titulo = $args['titulo'] ?? '';
         $this->precio = $args['precio'] ?? '';
         $this->imagen = $args['imagen'] ?? '';
@@ -30,10 +28,9 @@ class Propiedad extends ActiveRecord {
         $this->habitaciones = $args['habitaciones'] ?? '';
         $this->wc = $args['wc'] ?? '';
         $this->estacionamiento = $args['estacionamiento'] ?? '';
-        $this->creado = date('Y/m/d') ?? '';
-        $this->localidad = $args['localidad'] ?? ''; // Inicializar el nuevo campo localidad
+        $this->creado = $args['creado'] ?? date('Y/m/d');
+        $this->localidad = $args['localidad'] ?? ''; 
         $this->vendedorId = $args['vendedorId'] ?? '';
-        $this->nombre = $args['nombre'] ?? '';
     }
 
     public function validar() {
@@ -43,10 +40,10 @@ class Propiedad extends ActiveRecord {
         if(!$this->precio) {
             self::$errores[] = "El precio es obligatorio!";
         }
-         if(!$this->imagen) {
-             self::$errores[] = "Una imagen es obligatoria";
-         }
-        if( strlen($this->descripcion) < 50) {
+        if(!$this->imagen) {
+            self::$errores[] = "Una imagen es obligatoria";
+        }
+        if(strlen($this->descripcion) < 50) {
             self::$errores[] = "La descripción debe contener al menos 50 caracteres.";
         }
         if(!$this->habitaciones) {
@@ -65,21 +62,23 @@ class Propiedad extends ActiveRecord {
     }
 
     public static function allWithVendedorNames() {
-        $query = "SELECT propiedades.*, vendedores.nombre
-        FROM propiedades
-        INNER JOIN vendedores ON propiedades.vendedorId = vendedores.id";
-        $result = self::consultarSQL($query);
-        return $result;
+        $query = "SELECT propiedades.*, vendedores.nombre AS nombre
+                  FROM propiedades
+                  LEFT JOIN vendedores ON propiedades.vendedorId = vendedores.id";
+        return self::consultarSQL($query);
     }
+
+    public static function obtenerLocalidades($termino) {
+        $query = "SELECT DISTINCT localidad FROM propiedades WHERE localidad LIKE ?";
+        $parametros = ['%' . $termino . '%'];
+        return self::consultarSQL($query, $parametros);
+    }
+
     public static function buscarPorLocalidad($localidad) {
-        // Realizar una consulta para obtener las propiedades en la localidad especificada
-        $query = "SELECT * FROM propiedades WHERE localidad = ?";
-        echo $query;
-        $parametros = [$localidad];
-        $result = self::consultarSQL($query, $parametros);
-        return $result;
+        $query = "SELECT * FROM propiedades WHERE localidad LIKE ?";
+        $parametros = ['%' . strtolower($localidad) . '%'];
+        return self::consultarSQL($query, $parametros);
     }
     
-
 }
 ?>
